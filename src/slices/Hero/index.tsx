@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 import { Content, KeyTextField } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import gsap from "gsap";
+import Bounded from "@/components/Bounds";
 
 /**
  * Props for `Hero`.
@@ -31,11 +32,24 @@ tl.fromTo(".name-animation",{
   ease:"elastic.out(1,0.3)",
   duration: 1,
   transformOrigin: "left top",
+  delay: 0.5,
   stagger:{
-    each: 0.1
+    each: 0.1,
+    from:"random"
   }
 })
 
+tl.fromTo(".role",{
+y:20,
+opacity:0,
+scale:1.2,
+},{
+opacity:1,
+y:0,
+duration:1,
+scale:1 ,
+ease: "elastic.out(1,0.3)"
+})
 
 }, component)
 return () => ctx.revert()
@@ -53,7 +67,7 @@ return () => ctx.revert()
 
 
   return (
-    <section
+    <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       ref={component}
@@ -62,15 +76,15 @@ return () => ctx.revert()
 
         <div className="cols-start-1 md:row-start-1">
 <h1 className="mb-8 text-[clamp(3rem,20vmin,20rem)] font-extrabold leading-none tracking-tighter" aria-label={slice.primary.first_name + " " + slice.primary.last_name}>
-      <span className='block text-slate-300' >{renderLetters(slice.primary.first_name, "first")}</span>
+      <span className='block text-stone-300' >{renderLetters(slice.primary.first_name, "first")}</span>
       <span className="-mt-[.2em] block text-slate-300">{renderLetters(slice.primary.last_name, "last")}</span>
       </h1>
-      <span className="block bg-gradient-to-r from-blue-500 to-white bg-clip-text text-2xl font-bold uppercase tracking-[.2em] text-transparent opacity-100 md:text-4xl">{slice.primary.tag_line}</span> 
+      <span className="role block bg-gradient-to-r from-blue-500 to-white bg-clip-text text-2xl font-bold uppercase tracking-[.2em] text-transparent opacity-0 md:text-4xl">{slice.primary.tag_line}</span> 
       </div>
 
       </div>
     
-    </section>
+    </Bounded>
   );
 };
 
