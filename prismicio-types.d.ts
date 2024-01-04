@@ -69,7 +69,307 @@ export type HomepageDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = HomepageDocument;
+type PageDocumentDataSlicesSlice = TechStackSlice | AboutSlice;
+
+/**
+ * Content for Page documents
+ */
+interface PageDocumentData {
+  /**
+   * Slice Zone field in *Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<PageDocumentDataSlicesSlice> /**
+   * Meta Description field in *Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Page document from Prismic
+ *
+ * - **API ID**: `page`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
+
+/**
+ * Item in *Settings → Nav Item*
+ */
+export interface SettingsDocumentDataNavItemItem {
+  /**
+   * Link field in *Settings → Nav Item*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.nav_item[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+
+  /**
+   * label field in *Settings → Nav Item*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.nav_item[].label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label: prismic.KeyTextField;
+}
+
+/**
+ * Content for Settings documents
+ */
+interface SettingsDocumentData {
+  /**
+   * Name field in *Settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * Nav Item field in *Settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.nav_item[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  nav_item: prismic.GroupField<Simplify<SettingsDocumentDataNavItemItem>>;
+
+  /**
+   * CTA Link field in *Settings*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.cta_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  cta_link: prismic.LinkField;
+
+  /**
+   * CTA Label field in *Settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.cta_label
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  cta_label: prismic.KeyTextField;
+
+  /**
+   * Github field in *Settings*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.github
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  github: prismic.LinkField;
+
+  /**
+   * LinkedIn field in *Settings*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.linkedin
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  linkedin: prismic.LinkField;
+
+  /**
+   * Email field in *Settings*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.email
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  email: prismic.LinkField /**
+   * Meta Title field in *Settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.meta_title
+   * - **Tab**: SEO and Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Desc field in *Settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.meta_desc
+   * - **Tab**: SEO and Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_desc: prismic.KeyTextField;
+
+  /**
+   * OG Image field in *Settings*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.og_image
+   * - **Tab**: SEO and Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  og_image: prismic.ImageField<never>;
+}
+
+/**
+ * Settings document from Prismic
+ *
+ * - **API ID**: `settings`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SettingsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<SettingsDocumentData>,
+    "settings",
+    Lang
+  >;
+
+export type AllDocumentTypes =
+  | HomepageDocument
+  | PageDocument
+  | SettingsDocument;
+
+/**
+ * Primary content in *About → Primary*
+ */
+export interface AboutSliceDefaultPrimary {
+  /**
+   * Heading field in *About → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Desc field in *About → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.primary.desc
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  desc: prismic.RichTextField;
+
+  /**
+   * Button Text field in *About → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.primary.button_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_text: prismic.KeyTextField;
+
+  /**
+   * Button Link field in *About → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+
+  /**
+   * Profile pic field in *About → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.primary.profile_pic
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  profile_pic: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for About Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AboutSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *About*
+ */
+type AboutSliceVariation = AboutSliceDefault;
+
+/**
+ * About Shared Slice
+ *
+ * - **API ID**: `about`
+ * - **Description**: About
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutSlice = prismic.SharedSlice<"about", AboutSliceVariation>;
 
 /**
  * Primary content in *Hero → Primary*
@@ -133,6 +433,76 @@ type HeroSliceVariation = HeroSliceDefault;
  */
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
+/**
+ * Primary content in *TechStack → Primary*
+ */
+export interface TechStackSliceDefaultPrimary {
+  /**
+   * Heading field in *TechStack → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tech_stack.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *TechStack → Items*
+ */
+export interface TechStackSliceDefaultItem {
+  /**
+   * Tech Name field in *TechStack → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tech_stack.items[].tech_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tech_name: prismic.KeyTextField;
+
+  /**
+   * Tech Color field in *TechStack → Items*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tech_stack.items[].tech_color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  tech_color: prismic.ColorField;
+}
+
+/**
+ * Default variation for TechStack Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TechStackSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TechStackSliceDefaultPrimary>,
+  Simplify<TechStackSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *TechStack*
+ */
+type TechStackSliceVariation = TechStackSliceDefault;
+
+/**
+ * TechStack Shared Slice
+ *
+ * - **API ID**: `tech_stack`
+ * - **Description**: TechStack
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TechStackSlice = prismic.SharedSlice<
+  "tech_stack",
+  TechStackSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -146,11 +516,26 @@ declare module "@prismicio/client" {
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
+      PageDocument,
+      PageDocumentData,
+      PageDocumentDataSlicesSlice,
+      SettingsDocument,
+      SettingsDocumentData,
+      SettingsDocumentDataNavItemItem,
       AllDocumentTypes,
+      AboutSlice,
+      AboutSliceDefaultPrimary,
+      AboutSliceVariation,
+      AboutSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      TechStackSlice,
+      TechStackSliceDefaultPrimary,
+      TechStackSliceDefaultItem,
+      TechStackSliceVariation,
+      TechStackSliceDefault,
     };
   }
 }
