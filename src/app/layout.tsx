@@ -20,7 +20,9 @@ export default function RootLayout({
       
       <body className={mont.className}>
       <Header/>
-        {children}</body>
+        {children}
+        <div className='h-[500vh]'></div>
+        </body>
     </html>
   )
 }
