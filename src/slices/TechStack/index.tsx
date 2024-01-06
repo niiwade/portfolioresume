@@ -30,7 +30,8 @@ const TechStack = ({ slice }: TechStackProps): JSX.Element => {
 
       const tl= gsap.timeline({
         scrollTrigger:{
-          markers:true,
+          trigger:component.current,
+          
           start: "top bottom",
           end: "bottom top",
           scrub:4
@@ -44,7 +45,8 @@ const TechStack = ({ slice }: TechStackProps): JSX.Element => {
       },{
         x:(index)=>{
           return index % 2 === 0 ? gsap.utils.random(-600, 400) : gsap.utils.random(600,400)
-        }
+        },
+        ease:"power1.inOut"
       })
 
     },component)
