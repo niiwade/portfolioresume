@@ -52,8 +52,9 @@ export default function ContentList({ items, contentType, fallbackImage, viewMor
           }
           )
       })
-    })
-  })
+    return () => ctx.revert()
+    } ,component)
+  },[] )
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
