@@ -85,8 +85,14 @@ export default function ContentList({ items, contentType, fallbackImage, viewMor
       }, component)
     }
 
+    
     window.addEventListener("mousemove", handleMouseMove)
+
+    return () => {window.removeEventListener('mousemove', handleMouseMove)}
+
   }, [currentItem])
+
+ 
 
   const contentImages = items.map((item) => {
     const image = isFilled.image(item.data.hover_image) ? item.data.hover_image : fallbackImage
@@ -99,6 +105,13 @@ export default function ContentList({ items, contentType, fallbackImage, viewMor
     })
   })
 
+  useEffect(() =>{
+    contentImages.forEach((url) =>{
+      if(!url) return
+      const img = new Image()
+      img.src = url
+    })
+    },[contentImages])
 
   const onMouseEnter = (index: number) => {
     setCurrentItem(index)
