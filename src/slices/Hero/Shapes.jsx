@@ -7,8 +7,6 @@ import { ContactShadows, Float, Environment, useGLTF, } from "@react-three/drei"
 import { Suspense, useEffect, useRef, useState } from "react"
 
 import { useSpring } from '@react-spring/core'
-import { a as three } from '@react-spring/three'
-import { a as web } from '@react-spring/web'
 import { gsap } from "gsap"
 
 export default function Shapes() {

@@ -6,7 +6,7 @@ import { Content, KeyTextField } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import {gsap} from "gsap";
 import Bounded from "@/components/Bounds";
-import Shapes from "./shapes"
+import Shapes from "./Shapes"
 /**
  * Props for `Hero`.
  */
