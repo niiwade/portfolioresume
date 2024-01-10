@@ -40,3 +40,4 @@ export async function generateStaticParams() {
     return { uid: page.uid };
   });
 }
+
