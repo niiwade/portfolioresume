@@ -49,8 +49,12 @@ export default async function Page({ params }: { params: Params }) {
             <span key={tag} >{tag}</span>
           ))
         }</div>
-        <p>{formattedDate}</p>
+        <p className="mt-8 border-b border-slate-900 text-xl font-medium text-slate-200">{formattedDate}</p>
+        <div className="prose prose-lg prose-invert mt-12 w-full max-w-none md:mt-20">
+
         <SliceZone slices={page.data.slices} components={components} />
+
+        </div>
       </div>
     </Bounded>
   );
