@@ -1,0 +1,58 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "FieldContent",
+				"value": "fact",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"title",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "dirt",
+							"type": "Text"
+						}
+					],
+					[
+						"time_period",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "society",
+							"type": "Text"
+						}
+					],
+					[
+						"place",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "slept",
+							"type": "Text"
+						}
+					],
+					[
+						"description",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Dolore laboris elit minim aliqua. Tempor duis commodo dolor nisi. Duis irure quis id occaecat id sunt ea sint nulla occaecat reprehenderit."
+									}
+								}
+							]
+						}
+					]
+				]
+			}
+		]
+	}
+]
