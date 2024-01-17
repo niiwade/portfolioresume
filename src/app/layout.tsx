@@ -4,7 +4,6 @@ import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import clsx from 'clsx'
-import { relative } from 'path'
 import { PrismicPreview } from '@prismicio/next'
 import { repositoryName, createClient } from '@/prismicio'
 
@@ -17,9 +16,6 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: settings.data.meta_title,
     description: settings.data.meta_desc,
-    // openGraph: {
-    //   images: [settings.data.og_image?.url || ""],
-    // },
   };
 }
 
